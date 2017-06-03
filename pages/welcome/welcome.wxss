@@ -11,7 +11,7 @@
 }
 
 .name{
-  font-size: 33rpx;
+  font-size: 32rpx;
   font-weight: blod;
   margin-top: 100rpx;
 }
