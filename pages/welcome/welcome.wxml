@@ -1,7 +1,7 @@
 <view class="container">
-   <image class="user-avater" src="/images/login.jpg"></image>
+   <image class="user-avater" src="/images/login.png"></image>
    <text class="name">hello,Key</text>
-      <view class="wordsContain">
+      <view class="wordsContain" bindtap="GoToMainPage">
         <text class="words">开启小程序之旅</text>
       </view>
 </view>

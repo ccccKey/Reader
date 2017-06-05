@@ -1,5 +1,11 @@
 Page({
 
+  GoToMainPage:function(){
+    wx.redirectTo({
+      url: '../posts/post',
+    })
+  },
+
   /**
    * 页面的初始数据
    */
