@@ -1,4 +1,4 @@
-<import src="post-item/post-item-template.wxml"/>
+<import src="post-item/post-item-template.wxml" />
 
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="2000">
@@ -14,7 +14,9 @@
   </swiper>
 
   <block wx:for="{{postsArr}}" wx:for-item="item" wx:for-index="idx">
-    <template is="postItem" data="{{item}}" />
+    <view catchtap="onClick" data-post-Id="{{item.postId}}">
+      <template is="postItem" data="{{...item}}"  />
+    </view>
   </block>
 
 </view>

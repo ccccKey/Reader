@@ -8,6 +8,7 @@ var post_content = [
     content: "橘黄蟹正壮",
     view_num: "112",
     collect_num: "96",
+    postId:1,
   },
   {
     date: "Sep 20 2017",
@@ -18,6 +19,7 @@ var post_content = [
     content: "比利林恩的中场故事",
     view_num: "172",
     collect_num: "86",
+    postId: 2,
   },
   {
     date: "Sep 21 2017",
@@ -28,6 +30,7 @@ var post_content = [
     content: "this is black cat",
     view_num: "212",
     collect_num: "226",
+    postId: 3,
   },
   {
     date: "Sep 22 2017",
@@ -38,6 +41,7 @@ var post_content = [
     content: "漫画里的房子",
     view_num: "312",
     collect_num: "76",
+    postId: 4,
   },
   {
     date: "Sep 25 2017",
@@ -48,6 +52,7 @@ var post_content = [
     content: "VR time is comming!",
     view_num: "88",
     collect_num: "66",
+    postId: 5,
   },
   {
     date: "Sep 29 2017",
@@ -58,6 +63,7 @@ var post_content = [
     content: "小龙与微信",
     view_num: "199",
     collect_num: "296",
+    postId: 6,
   },
 ]
 
