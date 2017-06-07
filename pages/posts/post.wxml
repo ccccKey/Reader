@@ -1,29 +1,20 @@
-<swiper indicator-dots="true" autoplay="true" interval="2000">
-  <swiper-item>
-    <image src="/images/iqiyi.png"></image>
-  </swiper-item>
-  <swiper-item>
-    <image src="/images/vr.png"></image>
-  </swiper-item>
-  <swiper-item>
-    <image src="/images/wx.png"></image>
-  </swiper-item>
-</swiper>
+<import src="post-item/post-item-template.wxml"/>
 
-<block wx:for="{{postsArr}}">
-  <view class="big-Content">
-    <view class="icon-Date-Content">
-      <image class="iconSS" src="{{item.author_img}}"></image>
-      <text class="dataSS">{{item.date}}</text>
-    </view>
-    <text class="titleSS">{{postitemsArr.title}}</text>
-    <image class="bigPicSS" src="{{item.post_img}}"></image>
-    <text class="desSS">{{item.content}}</text>
-    <view class="nums-content">
-      <image class="numIconSS" src="/images/icon/chat.png"></image>
-      <text class="numTextSS">{{item.view_num}}</text>
-      <image class="numIconSS" src="/images/icon/view.png"></image>
-      <text class="numTextSS">{{item.collect_num}}</text>
-    </view>
-  </view>
-</block>
+<view>
+  <swiper indicator-dots="true" autoplay="true" interval="2000">
+    <swiper-item>
+      <image src="/images/iqiyi.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/vr.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/wx.png"></image>
+    </swiper-item>
+  </swiper>
+
+  <block wx:for="{{postsArr}}" wx:for-item="item" wx:for-index="idx">
+    <template is="postItem" data="{{item}}" />
+  </block>
+
+</view>
