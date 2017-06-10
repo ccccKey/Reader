@@ -26,7 +26,7 @@ Page({
     var postId = event.currentTarget.dataset.postId;
     
     wx.navigateTo({
-      url: 'post-detail/post-detail',
+      url: 'post-detail/post-detail?postId=' + postId,
     })
   },
 

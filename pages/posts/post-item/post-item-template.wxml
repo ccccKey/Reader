@@ -1,17 +1,17 @@
 <template name="postItem">
   <view class="big-Content">
     <view class="icon-Date-Content">
-      <image class="iconSS" src="{{author_img}}"></image>
+      <image class="iconSS" src="{{avatar}}"></image>
       <text class="dataSS">{{date}}</text>
     </view>
     <text class="titleSS">{{postitemsArr.title}}</text>
-    <image class="bigPicSS" src="{{post_img}}"></image>
+    <image class="bigPicSS" src="{{headImgSrc}}"></image>
     <text class="desSS">{{content}}</text>
     <view class="nums-content">
       <image class="numIconSS" src="/images/icon/chat.png"></image>
-      <text class="numTextSS">{{view_num}}</text>
+      <text class="numTextSS">{{reading}}</text>
       <image class="numIconSS" src="/images/icon/view.png"></image>
-      <text class="numTextSS">{{collect_num}}</text>
+      <text class="numTextSS">{{collection}}</text>
     </view>
   </view>
 </template>
