@@ -1,5 +1,6 @@
 <view class="detailContent">
-  <image class="head-image" src="{{tarPostData.headImgSrc}}"></image>
+  <image class="head-image" src="{{isPlayMusic ? tarPostData.music.coverImg : tarPostData.headImgSrc}}"></image>
+  <image class="musicImg" catchtap="onMudicClick" src="{{isPlayMusic? '/images/music/music-stop.png' : '/images/music/music-start.png'}}"></image>
   <view>
     <image class="avatar" src="{{tarPostData.avatar}}"></image>
     <text class="author">{{tarPostData.author}}</text>
@@ -11,7 +12,7 @@
     <view class="circle-img">
       <image wx:if="{{collected}}" catchtap="onCollectClick" class="circle-img Image" src="/images/icon/collection.png"></image>
       <image wx:else catchtap="onCollectClick" class="circle-img Image" src="/images/icon/collection-anti.png"></image>
-      <image src="/images/icon/share.png"></image>
+      <image catchtap="shareBtn" src="/images/icon/share.png"></image>
     </view>
     <view class="horizon"></view>
   </view>

@@ -1,4 +1,5 @@
 var postPageData = require("../../../data/posts-data.js")
+var app = getApp();
 
 Page({
 
@@ -6,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isPlayMusic: false,
   },
 
   /**
@@ -15,7 +16,7 @@ Page({
   onLoad: function (options) {
     var postId = options.postId;
     var tarData = postPageData.postList[postId]
-
+    var g_isPlayMusic = app.globalData.g_isPlayMusic;
     this.setData(
       {
         currPostId: postId,
@@ -35,6 +36,17 @@ Page({
       wx.setStorageSync("collectedArr", collectStatusArr)
     }
 
+    var that = this;
+    wx.onBackgroundAudioPause(function(){
+      that.setData({
+        isPlayMusic: false
+      })
+    })
+    wx.onBackgroundAudioPlay(function(){
+      that.setData({
+        isPlayMusic: true
+      })
+    })
   },
 
   onCollectClick: function (event) {
@@ -45,16 +57,53 @@ Page({
     wx.setStorageSync("collectedArr", collectStatusArr)
     this.setData(
       {
-        collected:collectStatus
+        collected: collectStatus
       }
     )
 
     wx.showToast({
-      title: collectStatus?"收藏成功":"取消成功",
+      title: collectStatus ? "收藏成功" : "取消成功",
       icon: 'success',
       duration: 1000,
       mask: true,
     })
+  },
+
+  shareBtn: function (event) {
+    var itemList = [
+      "分享到朋友圈",
+      "分享给微信好友",
+      "分享到QQ",
+    ];
+
+    wx.showActionSheet({
+      itemList: itemList,
+      success: function (res) {
+        wx.showModal({
+          title: '用户分享',
+          content: '用户' + itemList[res.tapIndex],
+          showCancel: true,
+        })
+      },
+    })
+  },
+
+  onMudicClick: function (event) {
+    if (this.data.isPlayMusic) {
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayMusic: false
+      })
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: this.data.tarPostData.music.url,
+        title: this.data.tarPostData.music.title,
+        coverImgUrl: this.data.tarPostData.music.coverImg,
+      })
+      this.setData({
+        isPlayMusic: true
+      })
+    }
   }
 
 })
