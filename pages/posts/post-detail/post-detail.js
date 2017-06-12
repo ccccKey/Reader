@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
     var postId = options.postId;
     var tarData = postPageData.postList[postId]
-    var g_isPlayMusic = app.globalData.g_isPlayMusic;
+
     this.setData(
       {
         currPostId: postId,
@@ -36,16 +36,26 @@ Page({
       wx.setStorageSync("collectedArr", collectStatusArr)
     }
 
+    if (app.globalData.g_isPlayMusic && app.globalData.g_isCurrentPostId === postId){
+      this.setData({
+        isPlayMusic: true
+      })
+    }
+
     var that = this;
     wx.onBackgroundAudioPause(function(){
       that.setData({
         isPlayMusic: false
       })
+      app.globalData.g_isPlayMusic = false
+      app.globalData.g_isCurrentPostId = postId
     })
     wx.onBackgroundAudioPlay(function(){
       that.setData({
         isPlayMusic: true
       })
+      app.globalData.g_isPlayMusic = true
+      app.globalData.g_isCurrentPostId = postId
     })
   },
 

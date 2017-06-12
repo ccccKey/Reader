@@ -30,6 +30,14 @@ Page({
     })
   },
 
+  onSwiperClick:function(event){
+    var currPostId = event.target.dataset.postid;
+
+    wx.navigateTo({
+      url: 'post-detail/post-detail?postId=' + currPostId,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
