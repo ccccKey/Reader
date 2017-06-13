@@ -1,0 +1,18 @@
+@import "../stars/stars-template.wxss";
+
+.movieItem-content{
+  display: flex;
+  flex-direction: column;
+  padding: 0 22rpx;
+}
+
+.movieItem-Img {
+  width: 200rpx;
+  height: 270rpx;
+  padding-bottom: 20rpx;
+}
+
+.movieItem-title{
+    margin-bottom: 16rpx;
+    font-size: 24rpx;
+}
