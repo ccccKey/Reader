@@ -1,20 +1,33 @@
+var app = getApp();
+
 Page({
 
   onLoad:function(event){
-    wx.request({
-      url: 'https://api.douban.com/v2/book/1220562',
+    var hotListUrl = "/movie/in_theaters";
+    var willPublichLietUrl = "/movie/coming_soon";
+    var top250ListUrl = "/movie/top250";
 
-      success:function(event)
-      {
+    this.getCurrListData(app.globalData.g_doubanHomePage + hotListUrl);
+    this.getCurrListData(app.globalData.g_doubanHomePage + willPublichLietUrl);
+    this.getCurrListData(app.globalData.g_doubanHomePage + top250ListUrl);
+  },
+
+  getCurrListData:function(url){
+    wx.request({
+      url: url,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        "Content-Type": "json"
+      },
+
+      success: function (event) {
         console.log("OnSuccess");
         console.log(event.data);
       },
-      fail:function(event)
-      {
+      fail: function (event) {
         console.log("OnFail");
       },
-      complete:function(event)
-      {
+      complete: function (event) {
         console.log("OnComplete");
       }
 
