@@ -2,15 +2,15 @@
 
 <view class="movieListContent">
   <view class="moviesTemplate">
-    <template is="movieListTemplate"></template>
+    <template is="movieListTemplate" data="{{...newMovies}}"></template>
   </view>
 
   <view class="moviesTemplate">
-    <template is="movieListTemplate"></template>
+    <template is="movieListTemplate" data="{{...comingMovies}}"></template>
   </view>
 
   <view class="moviesTemplate">
-    <template is="movieListTemplate"></template>
+    <template is="movieListTemplate" data="{{...topMovies}}"></template>
   </view>
 
 </view>

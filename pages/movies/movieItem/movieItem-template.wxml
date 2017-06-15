@@ -1,9 +1,9 @@
-<import src="../stars/stars-template.wxml"/>
+<import src="../stars/stars-template.wxml" />
 
 <template name="movieItemTemplate">
   <view class="movieItem-content">
-    <image class="movieItem-Img" src="/images/post/bl.png"></image>
-    <text class="movieItem-title">比利林恩</text>
-    <template is="starsTemplate"></template>
+    <image class="movieItem-Img" src="{{img}}"></image>
+    <text class="movieItem-title">{{title}}</text>
+    <template is="starsTemplate" data="{{averange}}"></template>
   </view>
 </template>

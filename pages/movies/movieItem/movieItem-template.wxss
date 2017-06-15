@@ -15,4 +15,5 @@
 .movieItem-title{
     margin-bottom: 16rpx;
     font-size: 24rpx;
+    color: #666;
 }
