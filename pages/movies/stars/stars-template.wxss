@@ -8,16 +8,18 @@
   flex-direction: row;
   height: 17rpx;
   margin-right: 24rpx;
-  margin-top: 16rpx;
+  margin-top: 6rpx;
 }
 
-.starsImg{
-  padding-left: 5rpx;
+.stars image {
+  padding-left: 3rpx;
   height: 17rpx;
   width: 17rpx;
 }
 
 .starScore{
+  font-size: 24rpx;
   color: #1f3463;
+  margin-bottom: 7rpx;
 }
 

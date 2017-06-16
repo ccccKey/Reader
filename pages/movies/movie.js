@@ -1,3 +1,4 @@
+var util = require("../../utils/util.js");
 var app = getApp();
 
 Page({
@@ -58,7 +59,7 @@ Page({
         movieId: obj.id,
         averange: {
           average: obj.rating.average,
-          stars: obj.rating.stars,
+          stars: util.setStars(obj.rating.stars),
         }
       }
 
