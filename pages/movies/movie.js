@@ -14,12 +14,12 @@ Page({
     var willPublichLietUrl = "/movie/coming_soon" + "?start=0&count=3";
     var top250ListUrl = "/movie/top250" + "?start=0&count=3";
 
-    this.getCurrListData(app.globalData.g_doubanHomePage + hotListUrl, "newMovies");
-    this.getCurrListData(app.globalData.g_doubanHomePage + willPublichLietUrl, "comingMovies");
-    this.getCurrListData(app.globalData.g_doubanHomePage + top250ListUrl, "topMovies");
+    this.getCurrListData(app.globalData.g_doubanHomePage + hotListUrl, "newMovies", "即将上映");
+    this.getCurrListData(app.globalData.g_doubanHomePage + willPublichLietUrl, "comingMovies", "正在热映");
+    this.getCurrListData(app.globalData.g_doubanHomePage + top250ListUrl, "topMovies", "豆瓣Top250");
   },
 
-  getCurrListData: function (url, typeMov) {
+  getCurrListData: function (url, typeMov, categoryTitle) {
     var that = this;
     wx.request({
       url: url,
@@ -30,7 +30,7 @@ Page({
 
       success: function (data) {
         console.log(data);
-        that.handleData(data.data, typeMov);
+        that.handleData(data.data, typeMov, categoryTitle);
       },
       fail: function (event) {
         console.log("OnFail");
@@ -42,7 +42,7 @@ Page({
     })
   },
 
-  handleData: function (currData, typeMov) {
+  handleData: function (currData, typeMov, categoryTitle) {
     var dataList = [];
 
     for (var idx in currData.subjects) {
@@ -69,8 +69,17 @@ Page({
     var newMovieList = {};
     newMovieList[typeMov] = {
       movies: dataList, 
+      categoryTitle: categoryTitle
     }
     this.setData(newMovieList);
+  },
+
+  giveMore:function(event){
+    var caTitle = event.currentTarget.dataset.moviet;
+
+    wx.navigateTo({
+      url: 'movie-more/movie-more?caTitle=' + caTitle,
+    })
   }
 
 })
