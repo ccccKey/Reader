@@ -1,0 +1,11 @@
+<import src="../movieItem/movieItem-template.wxml" />
+
+<template name="moreMovieGridTemplate">
+  <view class="allContainer">
+    <block wx:for="{{currMoreMovieList}}" wx:for-item="movie">
+      <view class="moreMovieContainer">
+        <template is="movieItemTemplate" data="{{...movie}}" />
+      </view>
+    </block>
+  </view>
+</template>

@@ -29,15 +29,11 @@ Page({
       },
 
       success: function (data) {
-        console.log(data);
         that.handleData(data.data, typeMov, categoryTitle);
       },
       fail: function (event) {
-        console.log("OnFail");
+        console.log("getCurrListData Fail");
       },
-      complete: function (event) {
-        console.log("OnComplete");
-      }
 
     })
   },
