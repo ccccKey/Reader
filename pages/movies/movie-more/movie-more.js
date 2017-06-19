@@ -9,6 +9,9 @@ Page({
    */
   data: {
     currMoreMovieList : {},
+    currURL:"",
+    totalCount:0,
+    isEmpty:true,
   },
 
   /**
@@ -31,7 +34,16 @@ Page({
         getURL = app.globalData.g_doubanHomePage + "/movie/top250";
         break;
     }
+    this.setData({
+      currURL : getURL,
+    })
     util.HTTP_GET(getURL, this.getMoreMoviesDataBack);
+  },
+
+  scrollViewReflesh:function(event){
+    wx.showNavigationBarLoading();
+    var getMoreURL = this.data.currURL + "?start=" + this.data.totalCount + "&count=20";
+    util.HTTP_GET(getMoreURL, this.getMoreMoviesDataBack);
   },
 
   getMoreMoviesDataBack: function (currData) {
@@ -55,14 +67,47 @@ Page({
       dataList.push(movie);
     }
 
+    var totalMovies = {};
+    if (!this.data.isEmpty){
+      totalMovies = this.data.currMoreMovieList.concat(dataList);
+    }else{
+      totalMovies = dataList;
+      this.data.isEmpty = false;
+    }
+    
     this.setData({
-      currMoreMovieList: dataList
-    })
+      currMoreMovieList: totalMovies
+    });
+
+    this.data.totalCount += 20;
+
+    wx.hideNavigationBarLoading();
   },
 
   onReady: function (event) {
     wx.setNavigationBarTitle({
       title: this.data.caTitle,
     })
-  }
+  },
+
+  // onPullDownRefresh: function (event) {
+  //   console.log("onPullDownRefresh")
+  //   var refreshURL = this.data.currURL + "?start=0&count=20";
+  //   util.HTTP_GET(refreshURL, this.getMoreMoviesDataBack);
+  //   this.data.currMoreMovieList = {};
+  //   this.data.isEmpty = true;
+  //   wx.showNavigationBarLoading();
+  //   wx.stopPullDownRefresh();
+  // }
+
+  onReachBottom: function (event) {
+    console.log("onReachBottom")
+    this.data.currMoreMovieList = {};
+    this.data.isEmpty = true;
+
+    var refreshURL = this.data.currURL + "?start=0&count=20";
+    util.HTTP_GET(refreshURL, this.getMoreMoviesDataBack);
+    wx.showNavigationBarLoading();
+    wx.stopPullDownRefresh();
+  },
 })
