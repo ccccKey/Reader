@@ -43,6 +43,13 @@ Page({
     }
 
     var that = this;
+    wx.onBackgroundAudioPlay(function () {
+      that.setData({
+        isPlayMusic: true
+      })
+      app.globalData.g_isPlayMusic = true
+      app.globalData.g_isCurrentPostId = postId
+    })
     wx.onBackgroundAudioPause(function(){
       that.setData({
         isPlayMusic: false
@@ -50,11 +57,11 @@ Page({
       app.globalData.g_isPlayMusic = false
       app.globalData.g_isCurrentPostId = postId
     })
-    wx.onBackgroundAudioPlay(function(){
+    wx.onBackgroundAudioStop(function(){
       that.setData({
         isPlayMusic: true
       })
-      app.globalData.g_isPlayMusic = true
+      app.globalData.g_isPlayMusic = false
       app.globalData.g_isCurrentPostId = postId
     })
   },

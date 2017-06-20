@@ -3,7 +3,7 @@
 <template name="moreMovieGridTemplate">
   <view class="allContainer">
   <!--<scroll-view class="allContainer" scroll-y="true" scroll-x="false" bindscrolltolower="scrollViewReflesh">-->
-    <block wx:for="{{currMoreMovieList}}" wx:for-item="movie">
+    <block wx:for="{{movies}}" wx:for-item="movie">
       <view class="moreMovieContainer">
         <template is="movieItemTemplate" data="{{...movie}}" />
       </view>

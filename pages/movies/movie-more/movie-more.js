@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currMoreMovieList : {},
+    movies : {},
     currURL:"",
     totalCount:0,
     isEmpty:true,
@@ -69,14 +69,14 @@ Page({
 
     var totalMovies = {};
     if (!this.data.isEmpty){
-      totalMovies = this.data.currMoreMovieList.concat(dataList);
+      totalMovies = this.data.movies.concat(dataList);
     }else{
       totalMovies = dataList;
       this.data.isEmpty = false;
     }
     
     this.setData({
-      currMoreMovieList: totalMovies
+      movies: totalMovies
     });
 
     this.data.totalCount += 20;

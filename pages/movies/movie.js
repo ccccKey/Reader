@@ -81,6 +81,13 @@ Page({
     })
   },
 
+  showMovieDetail:function(event){
+    var movieId = event.currentTarget.dataset.movieId;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId,
+    })
+  },
+
   FocusInput:function(event){
     this.setData({
       containerShow:false,
