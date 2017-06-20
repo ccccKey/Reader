@@ -1,16 +1,25 @@
 <import src="movieList/movieList-template.wxml" />
+<import src="moreMovie-grid/moreMovie-grid-template.wxml"/>
 
-<view class="movieListContent">
+<view class="searchContainer">
+  <icon class="search-img" type="search" size="13" color="#405f80" />
+  <input class="input" type="text" placeholder="变形金刚5,加勒比海盗5" placeholder-class="placeholder" bindfocus="FocusInput" bindconfirm="FocusFirm" />
+  <image wx:if="{{searchPanelShow}}" src="/images/icon/xx.png" class="xx-img" bindtap="onCancelImgTap"></image>
+</view>
+
+<view class="movieListContent" wx:if="{{containerShow}}">
   <view class="moviesTemplate">
     <template is="movieListTemplate" data="{{...newMovies}}"></template>
   </view>
-
   <view class="moviesTemplate">
     <template is="movieListTemplate" data="{{...comingMovies}}"></template>
   </view>
-
   <view class="moviesTemplate">
     <template is="movieListTemplate" data="{{...topMovies}}"></template>
   </view>
-
 </view>
+
+<view class="search-panel" wx:if="{{searchPanelShow}}">
+    <template is="moreMovieGridTemplate" data="{{...searchResult}}"/>
+</view>
+

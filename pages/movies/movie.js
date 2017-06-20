@@ -6,7 +6,10 @@ Page({
   data: {
     newMovies: {},
     comingMovies: {},
-    topMovies: {}
+    topMovies: {},
+    searchResult:{},
+    containerShow:true,
+    searchPanelShow: false,
   },
 
   onLoad: function (event) {
@@ -76,6 +79,27 @@ Page({
     wx.navigateTo({
       url: 'movie-more/movie-more?caTitle=' + caTitle,
     })
-  }
+  },
+
+  FocusInput:function(event){
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true
+    })
+  },
+
+  FocusFirm:function(event){
+    var text = event.detail.value;
+    var searchUrl = app.globalData.g_doubanHomePage + "/movie/search?q=" + text;
+    this.getCurrListData(searchUrl, "searchResult", "");    
+  },
+
+  onCancelImgTap:function(event){
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false,
+      searchResult:{}
+    })
+  },
 
 })

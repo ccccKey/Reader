@@ -3,6 +3,10 @@
   flex-direction: row;
 }
 
+.search-img{
+  margin: auto 0 auto 20rpx;
+}
+
 .stars{
   display: flex;
   flex-direction: row;
