@@ -104,6 +104,7 @@ Page({
     console.log("onReachBottom")
     this.data.currMoreMovieList = {};
     this.data.isEmpty = true;
+    this.data.totalCount = 0;
 
     var refreshURL = this.data.currURL + "?start=0&count=20";
     util.HTTP_GET(refreshURL, this.getMoreMoviesDataBack);
